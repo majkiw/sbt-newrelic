@@ -6,3 +6,5 @@ packageArchetype.java_application
 name := "app"
 
 NewRelic.packagerSettings
+
+newrelicCustomTracing := true
