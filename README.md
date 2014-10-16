@@ -59,6 +59,12 @@ To enable custom tracing, add the following to your `build.sbt` file:
 newrelicCustomTracing := true
 ```
 
+To include the New Relic client API in your project's library dependencies, add to your build:
+
+```scala
+newrelicIncludeApi := true
+```
+
 To provide a static `newrelic.yml` file instead of a generated file, place the
 file somewhere (e.g. `resourceDirectory`, which is `conf/` by default for Play
 applications, or `src/main/resources` for many other builds), and refer to it

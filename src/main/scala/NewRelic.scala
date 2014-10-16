@@ -18,6 +18,7 @@ object NewRelic extends AutoPlugin {
     val newrelicLicenseKey = settingKey[Option[String]]("License Key for New Relic account")
     val newrelicCustomTracing = settingKey[Boolean]("Option to scan and instrument @Trace annotations")
     val newrelicTemplateReplacements = settingKey[Seq[(String, String)]]("Replacements for New Relic configuration template")
+    val newrelicIncludeApi = settingKey[Boolean]("Add New Relic API artifacts to library dependencies")
   }
 
   import autoImport._
@@ -38,7 +39,14 @@ object NewRelic extends AutoPlugin {
       "license_key" → newrelicLicenseKey.value.getOrElse(""),
       "custom_tracing" → newrelicCustomTracing.value.toString
     ),
+    newrelicIncludeApi := false,
     libraryDependencies += "com.newrelic.agent.java" % "newrelic-agent" % newrelicVersion.value % nrConfig,
+    libraryDependencies ++= {
+      if (newrelicIncludeApi.value)
+        Seq("com.newrelic.agent.java" % "newrelic-api" % newrelicVersion.value)
+      else
+        Seq.empty
+    },
     mappings in Universal ++= Seq(
       newrelicAgent.value -> "newrelic/newrelic.jar",
       newrelicConfig.value -> "newrelic/newrelic.yml"
