@@ -4,12 +4,8 @@ $ exists target/universal/stage/newrelic/newrelic.jar
 $ exec grep -q "addJava .*newrelic.jar" target/universal/stage/bin/app
 $ exec grep -q "app_name: app" target/universal/stage/newrelic/newrelic.yml
 $ exec grep -q "license_key: ''" target/universal/stage/newrelic/newrelic.yml
-$ exec grep -q "enable_custom_tracing: false" target/universal/stage/newrelic/newrelic.yml
+$ exec grep -q "enable_custom_tracing: true" target/universal/stage/newrelic/newrelic.yml
 
 > set newrelicLicenseKey := Some("abc")
 > universal:stage
 $ exec grep -q "license_key: 'abc'" target/universal/stage/newrelic/newrelic.yml
-
-> set newrelicCustomTracing := true
-> universal:stage
-$ exec grep -q "enable_custom_tracing: true" target/universal/stage/newrelic/newrelic.yml
