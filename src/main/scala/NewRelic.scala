@@ -3,9 +3,11 @@ package com.gilt.sbt.newrelic
 import sbt._
 import sbt.Keys._
 
-import com.typesafe.sbt.SbtNativePackager._
-import NativePackagerKeys._
-import com.typesafe.sbt.packager.archetypes.TemplateWriter
+import com.typesafe.sbt.SbtNativePackager
+import com.typesafe.sbt.packager.archetypes.{JavaAppPackaging, TemplateWriter}
+import com.typesafe.sbt.packager.universal.UniversalPlugin
+import JavaAppPackaging.autoImport._
+import UniversalPlugin.autoImport._
 
 object NewRelic extends AutoPlugin {
 
@@ -23,7 +25,11 @@ object NewRelic extends AutoPlugin {
 
   import autoImport._
 
+  override val requires = JavaAppPackaging && UniversalPlugin
+
   val nrConfig = config("newrelic-agent").hide
+
+  override def projectSettings = packagerSettings
 
   def packagerSettings: Seq[Setting[_]] = Seq(
     ivyConfigurations += nrConfig,

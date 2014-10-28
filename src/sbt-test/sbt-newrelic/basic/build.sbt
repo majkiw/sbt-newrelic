@@ -1,10 +1,7 @@
-import com.typesafe.sbt.SbtNativePackager._
-import NativePackagerKeys._
+enablePlugins(JavaAppPackaging)
 
-packageArchetype.java_application
+enablePlugins(NewRelic)
 
 name := "app"
-
-NewRelic.packagerSettings
 
 newrelicCustomTracing := true
