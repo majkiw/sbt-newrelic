@@ -7,8 +7,6 @@ scala:
   - 2.10.4
 jdk:
   - openjdk6
-  - openjdk7
-  - oraclejdk8
 notifications:
   email:
     - gcoady@gilt.com

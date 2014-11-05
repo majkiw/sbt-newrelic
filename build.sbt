@@ -10,10 +10,10 @@ scalacOptions ++= List(
   "-unchecked",
   "-deprecation",
   "-Xlint",
-  "-language:_",
-  "-target:jvm-1.6",
   "-encoding", "UTF-8"
 )
+
+javaVersionPrefix in javaVersionCheck := Some("1.6")
 
 addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "0.7.4" % "provided")
 

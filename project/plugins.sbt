@@ -1,5 +1,7 @@
 libraryDependencies += "org.scala-sbt" % "scripted-plugin" % sbtVersion.value
 
+addSbtPlugin("com.typesafe.sbt" % "sbt-javaversioncheck" % "0.1.0")
+
 addSbtPlugin("com.typesafe.sbt" % "sbt-scalariform" % "1.3.0")
 
 resolvers += "jgit-repo" at "http://download.eclipse.org/jgit/maven"
