@@ -25,7 +25,7 @@ object NewRelic extends AutoPlugin {
 
   import autoImport._
 
-  override val requires = JavaAppPackaging && UniversalPlugin
+  override val requires = JavaAppPackaging
 
   val nrConfig = config("newrelic-agent").hide
 
