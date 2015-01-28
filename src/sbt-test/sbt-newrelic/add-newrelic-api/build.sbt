@@ -7,4 +7,4 @@ name := "app"
 
 NewRelic.packagerSettings
 
-newrelicVersion := "3.11.0"
+newrelicVersion := "3.13.0"
